@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta
+      name="title"
+      content="Data-Driven Modeling of Hybrid Automata within a Unified Model Learning Framework - CPS-IoT Week 2026"
+    />
+    <meta
+      name="description"
+      content="Tutorial on using Flowcean for data-driven modeling of Cyber-Physical Systems (CPS) and hybrid automata identification."
+    />
+    <meta
+      name="keywords"
+      content="CPS, Hybrid Automata, Flowcean, Model Learning, System Identification, CPS-IoT Week"
+    />
+    <meta name="author" content="Maximilian Schmidt, Swantje Plambeck" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="English" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Hamburg University of Technology" />
+    <meta
+      property="og:title"
+      content="Data-Driven Modeling of Hybrid Automata within a Unified Model Learning Framework"
+    />
+    <meta
+      property="og:description"
+      content="Join our tutorial at CPS-IoT Week 2026 to learn about unified model learning frameworks and hybrid system identification."
+    />
+    <meta property="og:url" content="https://www.flowcean.me" />
+    <meta property="og:image" content="static/images/preview.png" />
+
+    <title>
+      Data-Driven Modeling of Hybrid Automata within a Unified Model Learning
+      Framework
+    </title>
+
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico" />
+    <link rel="apple-touch-icon" href="static/images/favicon.ico" />
+
+    <link rel="stylesheet" href="static/css/bulma.min.css" />
+    <link rel="stylesheet" href="static/css/index.css" />
+
+    <link
+      rel="preload"
+      href="static/css/bulma-carousel.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="static/css/bulma-slider.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="static/css/fontawesome.all.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+
+    <noscript>
+      <link rel="stylesheet" href="static/css/bulma-carousel.min.css" />
+      <link rel="stylesheet" href="static/css/bulma-slider.min.css" />
+      <link rel="stylesheet" href="static/css/fontawesome.all.min.css" />
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+      />
+    </noscript>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    ></script>
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <script defer src="static/js/bulma-carousel.min.js"></script>
+    <script defer src="static/js/bulma-slider.min.js"></script>
+    <script defer src="static/js/index.js"></script>
+  </head>
+  <body>
+    <button
+      class="scroll-to-top"
+      onclick="scrollToTop()"
+      title="Scroll to top"
+      aria-label="Scroll to top"
+    >
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <main id="main-content">
+      <section class="hero">
+        <div class="hero-body">
+          <div class="container is-max-desktop">
+            <div class="columns is-centered">
+              <div class="column has-text-centered">
+                <h1 class="title is-1 publication-title">
+                  Data-Driven Modeling of Hybrid Automata within a Unified Model
+                  Learning Framework
+                </h1>
+                <div class="is-size-5 publication-authors">
+                  <span class="author-block">Maximilian Schmidt,</span>
+                  <span class="author-block"> Swantje Plambeck</span>
+                </div>
+
+                <div class="is-size-5 publication-authors">
+                  <span class="author-block"
+                    >Institute of Embedded Systems, Hamburg University of
+                    Technology<br />CPS-IoT Week 2026, Saint-Malo</span
+                  >
+                </div>
+
+                <div class="column has-text-centered">
+                  <div class="publication-links">
+                    <span class="link-block">
+                      <a
+                        href="https://github.com/flowcean"
+                        target="_blank"
+                        class="external-link button is-normal is-rounded is-dark"
+                      >
+                        <span class="icon">
+                          <i class="fab fa-github"></i>
+                        </span>
+                        <span>Flowcean GitHub</span>
+                      </a>
+                    </span>
+
+                    <span class="link-block">
+                      <a
+                        href="#"
+                        class="external-link button is-normal is-rounded is-dark"
+                      >
+                        <span class="icon">
+                          <i class="fas fa-book-open"></i>
+                        </span>
+                        <span>Tutorial Materials (Coming Soon)</span>
+                      </a>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section hero is-light">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <h2 class="title is-3">Tutorial Description</h2>
+              <div class="content has-text-justified">
+                <p>
+                  Understanding the behavior of complex Cyber-Physical Systems
+                  (CPS) requires models that capture both their physical
+                  dynamics and embedded control logic. As systems scale in
+                  complexity, manual modeling becomes infeasible, creating a
+                  strong need for unified workflows that guide practitioners
+                  from data collection to model deployment in a principled
+                  manner.
+                </p>
+                <p>
+                  <strong>Hybrid automata</strong> are a powerful and
+                  interpretable model for CPS, capturing both continuous
+                  physical dynamics and discrete mode transitions. However,
+                  identifying these directly from data is challenging.
+                </p>
+                <p>
+                  This tutorial introduces <strong>Flowcean</strong> as an
+                  enabling framework for data-driven CPS modeling. Participants
+                  will learn to construct modeling pipelines using diverse
+                  learning algorithms while maintaining a consistent interface.
+                  We will demonstrate how to apply modern hybrid system
+                  identification algorithms to data from simulated
+                  cyber-physical systems, allowing for the creation of
+                  interpretable models that support monitoring, prediction, and
+                  debugging.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container is-max-desktop">
+          <h2 class="title is-3 has-text-centered">Learning Objectives</h2>
+          <div class="content">
+            <p>By the end of this tutorial, participants will:</p>
+            <ul>
+              <li>
+                Understand the structure of data-driven modeling pipelines for
+                CPS.
+              </li>
+              <li>
+                Learn how Flowcean unifies machine learning workflows across
+                multiple libraries (e.g., scikit-learn, PyTorch).
+              </li>
+              <li>
+                Build and evaluate modeling pipelines using regression trees and
+                neural networks.
+              </li>
+              <li>
+                Understand the principles of hybrid automaton identification:
+                flow function learning, segmentation, and guard condition
+                discovery.
+              </li>
+              <li>
+                Apply a modern hybrid system identification algorithm to data
+                from a simulated cyber-physical system.
+              </li>
+              <li>
+                Compare interpretable hybrid models with black-box baselines.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="hero is-small is-light">
+        <div class="hero-body">
+          <div class="container is-max-desktop">
+            <h2 class="title is-3 has-text-centered">
+              Methodology & Framework
+            </h2>
+            <div id="results-carousel" class="carousel results-carousel">
+              <div class="item">
+                <img
+                  src="static/images/pipeline-light.svg"
+                  alt="Flowcean Pipeline"
+                />
+                <h2 class="subtitle has-text-centered">
+                  The Flowcean Learning Pipeline: Unified abstractions for data
+                  sourcing, transformation, learning, and evaluation.
+                </h2>
+              </div>
+              <div class="item">
+                <img
+                  src="static/images/ha-flow.svg"
+                  alt="Hybrid Automata Identification"
+                />
+                <h2 class="subtitle has-text-centered">
+                  Hybrid Automata Identification: Alternating between learning
+                  flow functions, segmenting data, and discovering guard
+                  conditions.
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container is-max-desktop">
+          <h2 class="title is-3 has-text-centered">Tutorial Agenda</h2>
+          <div class="content">
+            <p class="has-text-centered">
+              This half-day tutorial consists of two main parts, combining
+              conceptual lectures with hands-on exercises.
+            </p>
+            <br />
+
+            <div class="columns">
+              <div class="column is-6">
+                <div class="box h-100">
+                  <h3 class="title is-4">Part I: Unified CPS Modeling</h3>
+                  <p>
+                    <em
+                      >Focus: Flowcean workflow and preparation for hybrid
+                      identification.</em
+                    >
+                  </p>
+
+                  <h5 class="title is-6 mt-4">Lecture (45 mins)</h5>
+                  <ul>
+                    <li>Data acquisition from simulated or real CPS</li>
+                    <li>Feature engineering and preprocessing</li>
+                    <li>
+                      Learning strategies and integration (scikit-learn,
+                      PyTorch)
+                    </li>
+                    <li>Evaluation strategies, metrics, and analysis</li>
+                  </ul>
+
+                  <h5 class="title is-6 mt-4">Hands-on (45 mins)</h5>
+                  <ul>
+                    <li>Load and transform CPS-relevant data</li>
+                    <li>
+                      Train baseline models (regression trees, neural networks)
+                    </li>
+                    <li>Evaluate accuracy, runtime, and generalization</li>
+                    <li>Store and reload models using Flowcean</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="column is-6">
+                <div class="box h-100">
+                  <h3 class="title is-4">
+                    Part II: Hybrid Automata Identification
+                  </h3>
+                  <p>
+                    <em
+                      >Focus: Interpretable modeling paradigms and advanced
+                      strategies.</em
+                    >
+                  </p>
+
+                  <h5 class="title is-6 mt-4">Lecture (45 mins)</h5>
+                  <ul>
+                    <li>Motivation for hybrid models in CPS</li>
+                    <li>Flow functions and physical interpretation</li>
+                    <li>Segmentation of time-series data</li>
+                    <li>Guard conditions and transition logic</li>
+                  </ul>
+
+                  <h5 class="title is-6 mt-4">Hands-on (45-60 mins)</h5>
+                  <ul>
+                    <li>Load datasets or generate simulation data</li>
+                    <li>Run the segmentation and identification pipeline</li>
+                    <li>Infer guard conditions and construct a model</li>
+                    <li>Compare interpretability vs. black-box baselines</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section hero is-light" id="Organizers">
+        <div class="container is-max-desktop">
+          <h2 class="title is-3 has-text-centered">Organizers</h2>
+
+          <div class="columns is-vcentered">
+            <div class="column is-3 has-text-centered">
+              <figure class="image is-128x128 is-inline-block">
+                <img
+                  class="is-rounded"
+                  src="static/images/avatar_placeholder.png"
+                  alt="Maximilian Schmidt"
+                />
+              </figure>
+            </div>
+            <div class="column is-9">
+              <h3 class="title is-4">Maximilian Schmidt</h3>
+              <p class="subtitle is-6">Institute of Embedded Systems, TUHH</p>
+              <div class="content">
+                <p>
+                  Maximilian Schmidt is a research assistant and doctoral
+                  student at the Institute of Embedded Systems at Hamburg
+                  University of Technology (TUHH). He is a core developer of
+                  Flowcean and works on data-driven modeling of cyber-physical
+                  systems. He is part of the research project AGenC and has
+                  published several peer-reviewed papers on data-driven modeling
+                  for CPS.
+                </p>
+                <p>
+                  <a href="mailto:maximilian.schmidt@tuhh.de"
+                    ><i class="fas fa-envelope"></i>
+                    maximilian.schmidt@tuhh.de</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <hr />
+
+          <div class="columns is-vcentered">
+            <div class="column is-3 has-text-centered">
+              <figure class="image is-128x128 is-inline-block">
+                <img
+                  class="is-rounded"
+                  src="static/images/avatar_placeholder.png"
+                  alt="Swantje Plambeck"
+                />
+              </figure>
+            </div>
+            <div class="column is-9">
+              <h3 class="title is-4">Swantje Plambeck</h3>
+              <p class="subtitle is-6">Institute of Embedded Systems, TUHH</p>
+              <div class="content">
+                <p>
+                  Swantje Plambeck is a research assistant and doctoral
+                  candidate at the Institute of Embedded Systems at Hamburg
+                  University of Technology (TUHH). Working in the group for
+                  computer engineering since 2020, she specializes in
+                  data-driven modeling of cyber-physical systems. She is a
+                  developer of Flowcean and has published more than 20
+                  peer-reviewed journal, conference, and workshop papers.
+                </p>
+                <p>
+                  <a href="mailto:swantje.plambeck@tuhh.de"
+                    ><i class="fas fa-envelope"></i> swantje.plambeck@tuhh.de</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="Contributors">
+        <div class="container is-max-desktop content has-text-centered">
+          <h2 class="title is-3">Contributors</h2>
+
+          <div
+            class="is-flex is-justify-content-center is-align-items-center is-flex-wrap-wrap"
+          >
+            <a href="https://flowcean.me" target="_blank" class="mx-4 my-4">
+              <img
+                src="static/images/flowcean_logo_text_blue.svg"
+                width="300"
+                alt="Flowcean Logo"
+              />
+            </a>
+
+            <a href="https://www.tuhh.de/es" target="_blank" class="mx-4 my-4">
+              <img src="static/images/es_logo.svg" width="200" alt="IES Logo" />
+            </a>
+
+            <a href="https://www.tuhh.de" target="_blank" class="mx-4 my-4">
+              <img
+                src="static/images/tuhh_logo_en.png"
+                width="200"
+                alt="TUHH Logo"
+              />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="columns is-centered">
+            <div class="column is-8">
+              <div class="content has-text-centered">
+                <p>
+                  This page was built using the
+                  <a
+                    href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                    target="_blank"
+                    >Academic Project Page Template</a
+                  >.
+                  <br />
+                  This website is licensed under a
+                  <a
+                    rel="license"
+                    href="http://creativecommons.org/licenses/by-sa/4.0/"
+                    target="_blank"
+                    >Creative Commons Attribution-ShareAlike 4.0 International
+                    License</a
+                  >.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
