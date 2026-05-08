@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta
+      name="title"
+      content="Participant Guide - Data-Driven Modeling of Hybrid Automata"
+    />
+    <meta
+      name="description"
+      content="Local setup and exercise guide for the CPS-IoT Week 2026 Flowcean tutorial."
+    />
+    <meta name="author" content="Maximilian Schmidt, Swantje Plambeck" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="language" content="English" />
+
+    <title>Participant Guide - Data-Driven Modeling of Hybrid Automata</title>
+
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico" />
+    <link rel="apple-touch-icon" href="static/images/favicon.ico" />
+
+    <link rel="stylesheet" href="static/css/bulma.min.css" />
+    <link rel="stylesheet" href="static/css/index.css" />
+
+    <link
+      rel="preload"
+      href="static/css/fontawesome.all.min.css"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <noscript>
+      <link rel="stylesheet" href="static/css/fontawesome.all.min.css" />
+    </noscript>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+  </head>
+  <body>
+    <button
+      class="scroll-to-top"
+      onclick="scrollToTop()"
+      title="Scroll to top"
+      aria-label="Scroll to top"
+    >
+      <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <main id="main-content">
+      <section class="hero participant-hero">
+        <div class="hero-body">
+          <div class="container is-max-desktop">
+            <div class="columns is-centered">
+              <div class="column has-text-centered">
+                <h1 class="title is-1 publication-title">Participant Guide</h1>
+                <p class="subtitle is-4">CPS-IoT Week 2026 Tutorial</p>
+                <p class="is-size-5 publication-authors">
+                  Data-Driven Modeling of Hybrid Automata within a Unified Model
+                  Learning Framework
+                </p>
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a
+                      href="index.html"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon"
+                        ><i class="fas fa-arrow-left"></i
+                      ></span>
+                      <span>Back to Tutorial</span>
+                    </a>
+                  </span>
+                  <span class="link-block">
+                    <a
+                      href="https://flowcean.me/getting_started/installation/"
+                      target="_blank"
+                      rel="noopener"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon"><i class="fas fa-download"></i></span>
+                      <span>Flowcean Installation</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container is-max-desktop">
+          <div class="content">
+            <h2 class="title is-3">Before the Workshop</h2>
+            <p>
+              Please bring a laptop with <strong>Python 3.12</strong>, a working
+              <strong>terminal</strong>, and a stable <strong>internet</strong>
+              connection. The workshop uses Python 3.12 or newer to match the
+              Flowcean 0.8.0 release and the tested examples. Install Flowcean
+              locally.
+            </p>
+          </div>
+
+          <div class="columns is-variable is-5">
+            <div class="column">
+              <div class="box guide-card">
+                <h3 class="title is-4">uv setup</h3>
+                <p>
+                  Recommended if you already use
+                  <a
+                    href="https://docs.astral.sh/uv/"
+                    target="_blank"
+                    rel="noopener"
+                    >uv</a
+                  >
+                  for Python projects.
+                </p>
+                <pre><code>uv init flowcean-workshop
+cd flowcean-workshop
+uv add "flowcean[pysr]&gt;=0.8.0"</code></pre>
+                <div class="callout concept">
+                  <span class="callout-icon">i</span>
+                  <p>
+                    uv creates a project-local environment and installs the
+                    released Flowcean package from PyPI.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="column">
+              <div class="box guide-card">
+                <h3 class="title is-4">pip and venv setup</h3>
+                <p>
+                  Use the standard Python tooling path if you prefer not to use
+                  uv.
+                </p>
+                <pre><code>python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install "flowcean[pysr]>=0.8.0"</code></pre>
+                <div class="callout concept">
+                  <span class="callout-icon">i</span>
+                  <p>
+                    venv creates the environment, and pip installs the released
+                    Flowcean package.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="box guide-card">
+            <h3 class="title is-4">Smoke test</h3>
+            <p>
+              Run this from the uv project directory after setup. If you used
+              the pip and venv fallback, activate <code>.venv</code> and run the
+              same Python body with <code>python</code> instead.
+            </p>
+            <pre><code>uv run python - &lt;&lt;'PY'
+import flowcean.core
+import flowcean.polars
+import flowcean.hydra
+
+print("Imports OK")
+PY</code></pre>
+            <div class="callout checkpoint">
+              <span class="callout-icon">✓</span>
+              <p>The command prints <code>Imports OK</code>.</p>
+            </div>
+            <h3 class="title is-4">Optional live plots</h3>
+            <p>
+              Install <code>PyQt6</code> if you want interactive Matplotlib
+              windows on your laptop.
+            </p>
+            <pre><code>uv add PyQt6
+
+# pip and venv fallback
+python -m pip install PyQt6</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="section hero is-light">
+        <div class="container is-max-desktop">
+          <h2 class="title is-3">During the Workshop</h2>
+          <div class="exercise-list">
+            <div class="columns is-multiline">
+              <div class="column is-half">
+                <div class="box guide-card exercise-card">
+                  <h3 class="title is-4">Flowcean workflow basics</h3>
+                  <p>
+                    <strong>Goal:</strong> understand the common structure of a
+                    Flowcean project.
+                  </p>
+                  <div class="callout concept">
+                    <span class="callout-icon">i</span>
+                    <p>
+                      Environments, datasets, learners, and evaluation callbacks
+                      form a reusable modeling workflow.
+                    </p>
+                  </div>
+                  <p>
+                    References:
+                    <a
+                      href="https://flowcean.me/user_guide/overview/"
+                      target="_blank"
+                      rel="noopener"
+                      >overview</a
+                    >
+                    and
+                    <a
+                      href="https://flowcean.me/getting_started/new_project/"
+                      target="_blank"
+                      rel="noopener"
+                      >new project</a
+                    >.
+                  </p>
+                </div>
+              </div>
+              <div class="column is-half">
+                <div class="box guide-card exercise-card">
+                  <h3 class="title is-4">Trace prediction</h3>
+                  <p>
+                    <strong>Goal:</strong> build a model that predicts future
+                    trace values from data.
+                  </p>
+                  <div class="callout checkpoint">
+                    <span class="callout-icon">✓</span>
+                    <p>
+                      Identify which columns are inputs, targets, and
+                      time-dependent outputs.
+                    </p>
+                  </div>
+                  <p>
+                    Reference:
+                    <a
+                      href="https://flowcean.me/examples/trace_prediction/"
+                      target="_blank"
+                      rel="noopener"
+                      >trace prediction example</a
+                    >.
+                  </p>
+                </div>
+              </div>
+              <div class="column is-half">
+                <div class="box guide-card exercise-card">
+                  <h3 class="title is-4">Minimal hybrid-system simulation</h3>
+                  <p>
+                    <strong>Goal:</strong> inspect a compact hybrid-system
+                    simulation workflow.
+                  </p>
+                  <div class="callout concept">
+                    <span class="callout-icon">i</span>
+                    <p>
+                      Hybrid behavior combines continuous dynamics with discrete
+                      location changes.
+                    </p>
+                  </div>
+                  <p>
+                    Reference:
+                    <a
+                      href="https://flowcean.me/examples/hs_simple/"
+                      target="_blank"
+                      rel="noopener"
+                      >minimal hybrid-system example</a
+                    >.
+                  </p>
+                </div>
+              </div>
+              <div class="column is-half">
+                <div class="box guide-card exercise-card">
+                  <h3 class="title is-4">Hybrid-system gallery</h3>
+                  <p>
+                    <strong>Goal:</strong> compare several simulated systems
+                    used for hybrid modeling.
+                  </p>
+                  <div class="callout checkpoint">
+                    <span class="callout-icon">✓</span>
+                    <p>
+                      Choose one system and describe its locations, guards, and
+                      continuous state variables.
+                    </p>
+                  </div>
+                  <p>
+                    Reference:
+                    <a
+                      href="https://github.com/flowcean/flowcean/tree/main/examples/hybrid_systems"
+                      target="_blank"
+                      rel="noopener"
+                      >hybrid systems examples directory</a
+                    >.
+                  </p>
+                </div>
+              </div>
+              <div class="column is-half">
+                <div class="box guide-card exercise-card">
+                  <h3 class="title is-4">
+                    Simulated identification with HyDRA
+                  </h3>
+                  <p>
+                    <strong>Goal:</strong> use HyDRA to identify hybrid-system
+                    structure from simulation data.
+                  </p>
+                  <div class="callout concept">
+                    <span class="callout-icon">i</span>
+                    <p>
+                      HyDRA combines segmentation, flow learning, and guard
+                      learning into an interpretable hybrid automaton workflow.
+                    </p>
+                  </div>
+                  <p>
+                    Reference:
+                    <a
+                      href="https://flowcean.me/examples/simulated_hybrid_system/"
+                      target="_blank"
+                      rel="noopener"
+                      >simulated hybrid-system example</a
+                    >.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container is-max-desktop">
+          <h2 class="title is-3">Troubleshooting</h2>
+          <div class="table-container">
+            <table class="table is-striped is-fullwidth guide-table">
+              <thead>
+                <tr>
+                  <th>Symptom</th>
+                  <th>Likely Cause</th>
+                  <th>What To Try</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Python version errors</td>
+                  <td>The active interpreter is not Python 3.12 or newer.</td>
+                  <td>
+                    Run <code>uv run python --version</code> and recreate the
+                    environment with Python 3.12.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Wrong directory</td>
+                  <td>The command is running outside the workshop project.</td>
+                  <td>
+                    Change into the directory created by
+                    <code>uv init flowcean-workshop</code>, then rerun the
+                    command.
+                  </td>
+                </tr>
+                <tr>
+                  <td>uv command fails</td>
+                  <td>You are not using uv.</td>
+                  <td>
+                    Manually source the python environment and run python
+                    commands without uv.
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>import flowcean</code> fails</td>
+                  <td>
+                    Flowcean is missing or older than 0.8.0 in the activated
+                    environment.
+                  </td>
+                  <td>
+                    Activate the environment and install with
+                    <code>flowcean[pysr]>=0.8.0</code>.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Matplotlib window does not open</td>
+                  <td>
+                    The active environment does not have an interactive
+                    Matplotlib backend.
+                  </td>
+                  <td>
+                    Prefer saved figures during the workshop, or install
+                    <code>PyQt6</code> if you need a local window.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Documentation is missing</td>
+                  <td>
+                    Flowcean is still in development and a research project.
+                  </td>
+                  <td>
+                    Let us know! We are happy to collect issues or
+                    contributions.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section hero is-light">
+        <div class="container is-max-desktop">
+          <div class="content">
+            <h2 class="title is-3">After the Workshop</h2>
+            <p>
+              Continue with the
+              <a href="https://flowcean.me/" target="_blank" rel="noopener"
+                >Flowcean documentation</a
+              >
+              and browse the
+              <a
+                href="https://github.com/flowcean/flowcean"
+                target="_blank"
+                rel="noopener"
+                >Flowcean repository</a
+              >.
+            </p>
+            <p>
+              Questions after the tutorial can be sent to
+              <a href="mailto:maximilian.schmidt@tuhh.de">Maximilian Schmidt</a>
+              or
+              <a href="mailto:swantje.plambeck@tuhh.de">Swantje Plambeck</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script>
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      window.addEventListener("scroll", function () {
+        const scrollButton = document.querySelector(".scroll-to-top");
+        if (!scrollButton) {
+          return;
+        }
+
+        if (window.pageYOffset > 300) {
+          scrollButton.classList.add("visible");
+        } else {
+          scrollButton.classList.remove("visible");
+        }
+      });
+    </script>
+  </body>
+</html>

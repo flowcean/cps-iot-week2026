@@ -598,6 +598,133 @@ code {
 }
 
 
+/* Participant Guide */
+.participant-hero {
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.guide-summary {
+  font-size: 1.05rem;
+}
+
+.guide-card {
+  background: var(--background-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.guide-card .title {
+  margin-bottom: 1rem !important;
+}
+
+.guide-callout {
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+}
+
+.exercise-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.exercise-card {
+  margin-bottom: 0;
+}
+
+.callout {
+  align-items: flex-start;
+  border-left: 4px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+}
+
+.callout p {
+  margin: 0;
+}
+
+.callout-icon {
+  align-items: center;
+  border-radius: 999px;
+  display: inline-flex;
+  flex: 0 0 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 800;
+  height: 1.5rem;
+  justify-content: center;
+  line-height: 1;
+}
+
+.callout.checkpoint {
+  background: #eff6ff;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.callout.checkpoint .callout-icon {
+  background: #dbeafe;
+  color: var(--primary-hover);
+}
+
+.callout.concept {
+  background: var(--background-accent);
+  color: var(--text-primary);
+}
+
+.callout.concept .callout-icon {
+  background: #e0f2fe;
+  color: var(--primary-hover);
+}
+
+.callout.warning {
+  background: #fffbeb;
+  border-left-color: #f59e0b;
+  color: #92400e;
+}
+
+.callout.warning .callout-icon {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.callout.next-step {
+  background: #ecfdf5;
+  border-left-color: #10b981;
+  color: #065f46;
+}
+
+.callout.next-step .callout-icon {
+  background: #d1fae5;
+  color: #047857;
+}
+
+.guide-table td,
+.guide-table th {
+  vertical-align: top;
+}
+
+.organizer-avatar {
+  align-items: center;
+  background: var(--background-accent);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  color: var(--primary-hover);
+  display: inline-flex;
+  font-size: 2rem;
+  font-weight: 800;
+  height: 128px;
+  justify-content: center;
+  letter-spacing: 0.04em;
+  width: 128px;
+}
+
+
 /* Mobile Responsive Improvements */
 @media screen and (max-width: 768px) {
   .hero-body {
@@ -652,6 +779,14 @@ code {
   }
   
   .content.has-text-justified {
+    font-size: 1rem;
+  }
+
+  .guide-card {
+    padding: 1rem;
+  }
+
+  .guide-summary {
     font-size: 1rem;
   }
 }
@@ -748,6 +883,3 @@ a:focus {
     box-shadow: none !important;
   }
 }
-
-
-
