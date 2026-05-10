@@ -621,6 +621,52 @@ code {
   margin-bottom: 1rem !important;
 }
 
+.guide-card a:not(.button) {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.16em;
+}
+
+.guide-card a:not(.button):hover {
+  color: var(--primary-hover);
+  text-decoration-thickness: 0.12em;
+}
+
+.trace-resources {
+  background: var(--background-accent);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  margin-top: 1rem;
+  padding: 0.85rem;
+}
+
+.trace-resources-label {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.65rem;
+  text-transform: uppercase;
+}
+
+.trace-resource-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.trace-resource-link {
+  border: 1px solid #bfdbfe !important;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none !important;
+}
+
+.trace-resource-link:hover {
+  border-color: var(--primary-color) !important;
+}
+
 .guide-callout {
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-md);

@@ -8,6 +8,7 @@ GitHub Pages publishes the contents of `pages/`.
 
 - `pages/index.html`: public tutorial landing page.
 - `pages/participant-guide.html`: local setup and hands-on workshop companion.
+- `pages/static/data/`: downloadable workshop datasets and other static data files.
 
 ## Local Preview
 
