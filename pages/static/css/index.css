@@ -364,6 +364,20 @@ body {
   text-decoration: underline;
 }
 
+.license-block {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+}
+
+.license-icon {
+  display: inline-block;
+  height: 31px;
+  vertical-align: middle;
+}
+
 /* BibTeX Styling */
 pre {
   background: var(--background-accent) !important;
